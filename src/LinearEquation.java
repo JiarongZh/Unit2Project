@@ -30,7 +30,7 @@ public class LinearEquation {
     }
     public String equation(){
         double yInt = yIntercept();
-        String equation = (slope()+ "x");
+        String equation = (fracSlope()+ "x");
         if(yInt>0){
             equation += " + " + yInt;
         } else {
@@ -38,26 +38,32 @@ public class LinearEquation {
         }
         return equation;
     }
+   public int greatestCommonFactor(){
+        String factorList = "";
+       double xD = x2 - x1;
+       double yD = y2 - y1;
+       if (xD == yD){
+           factorList += yD;
+           return Integer.parseInt(factorList);
+       } else {
+           for (int i = 1; i<yD; i++){
+               if(yD%i == xD % i){
+                   factorList += i;
+               }
+           }
+       }
+       int len = factorList.length();
+       String sub = factorList.substring(len-1);
+       int gcf = Integer.parseInt(sub);
+       return gcf;
+   }
+
     public String fracSlope(){
         String slope = "";
         double xD = x2 - x1;
         double yD = y2 - y1;
-        double lower = 0.0;
-        if (xD>yD){
-            lower = yD;
-        } else {
-            lower = xD;
-        }
-        if (yD%xD == 0){
-            slope += yD/xD;
-            return slope;
-        } else if (yD%xD != 0){
-            for (int i = 2; i<lower; i++){
-                double modY = yD%i;
-                double modX = xD%i;
-                if (yD%i == 0 && xD%i == 0)
-            }
-        }
+        int gcf = greatestCommonFactor();
+        return slope += (int)yD/gcf + "/" + (int)xD/gcf;
     }
     public String lineInfo(){
         String cord1 = ("The first cord is :(" + x1 + "," + y1 + ")");

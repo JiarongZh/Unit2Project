@@ -1,4 +1,3 @@
-import javax.sound.sampled.Line;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 public class LinearEquationRunner {
